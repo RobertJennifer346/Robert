@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trézór.io/Start® | Starting Up Your Device | Térzór®</title>
+    <meta name="description" content="Official Trézór Suite - Secure cryptocurrency wallet management platform. Set up and manage your Trézór hardware wallet with ease.">
+    <meta name="keywords" content="Trézór.io/start, Trézór suite, Trézór bridge">
+    <meta property="og:title" content="Trézór.io/Start® | Starting Up Your Device | Térzór®">
+    <meta property="og:description" content="Official Trézór Suite - Secure cryptocurrency wallet management platform">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+    --primary: hsl(150, 80%, 20%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(222, 47%, 11%);
+    --muted: hsl(210, 40%, 96%);
+    --muted-foreground: hsl(215.4, 16.3%, 46.9%);
+    --border: hsl(214.3, 31.8%, 91.4%);
+    --radius: 0.5rem;
+}
+
+[data-theme="dark"] {
+    --primary: hsl(150, 80%, 20%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --background: hsl(222, 47%, 11%);
+    --foreground: hsl(210, 40%, 98%);
+    --muted: hsl(217.2, 32.6%, 17.5%);
+    --muted-foreground: hsl(215, 20.2%, 65.1%);
+    --border: hsl(217.2, 32.6%, 17.5%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.5;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+.header {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-nav ul {
+    display: none;
+    list-style: none;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .main-nav ul {
+        display: flex;
+    }
+}
+
+.main-nav a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.main-nav a:hover {
+    opacity: 0.8;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-foreground);
+    color: var(--primary);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+.hero p {
+    color: var(--muted-foreground);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+/* Features Section */
+.features {
+    padding: 4rem 0;
+    background-color: var(--muted);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.feature-card {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icon-wrapper {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Content Section */
+.content {
+    padding: 4rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.content h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+}
+
+.content p {
+    color: var(--muted-foreground);
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--muted);
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 2fr repeat(3, 1fr);
+    }
+}
+
+.footer-brand {
+    margin-bottom: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.wallet-icon {
+    width: 2rem;
+    height: 2rem;
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.footer-links h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links a {
+    color: var(--muted-foreground);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--foreground);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+}
+
+.theme-toggle:hover {
+    opacity: 0.9;
+}
+
+.theme-toggle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sun-icon {
+    display: none;
+}
+
+[data-theme="dark"] .sun-icon {
+    display: block;
+}
+
+[data-theme="dark"] .moon-icon {
+    display: none;
+}
+
+/* Animations */
+.animate-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.arrow-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 0.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+  </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="/" class="logo">Trézór Suite</a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#suite">Suite</a></li>
+                    <li><a href="#bridge">Bridge</a></li>
+                    <li><a href="#hardware">Hardware</a></li>
+                </ul>
+            </nav>
+
+            <button class="btn btn-primary">Get Started</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="animate-up">Secure Your Digital Future</h1>
+                <p class="animate-up">The most trusted hardware wallet for storing cryptocurrencies and digital assets</p>
+                <button class="btn btn-primary animate-up">
+                    Get Started
+                    <svg class="arrow-icon" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-card animate-up">
+                        <div class="icon-wrapper">
+                            <svg class="feature-icon" viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3>Secure Storage</h3>
+                        <p>Industry-leading security for your digital assets</p>
+                    </div>
+
+                    <div class="feature-card animate-up">
+                        <div class="icon-wrapper">
+                            <svg class="feature-icon" viewBox="0 0 24 24">
+                                <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h3>Easy Management</h3>
+                        <p>Intuitive interface for managing your cryptocurrencies</p>
+                    </div>
+
+                    <div class="feature-card animate-up">
+                        <div class="icon-wrapper">
+                            <svg class="feature-icon" viewBox="0 0 24 24">
+                                <path d="M12 22c6-3 9-8 9-13 0-3-2-5-4.5-5S12 6 12 6s-2.5-2-4.5-2S3 6 3 9c0 5 3 10 9 13z"/>
+                            </svg>
+                        </div>
+                        <h3>Mobile Support</h3>
+                        <p>Access your wallet on the go with our mobile app</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>Welcome to Trézór.io/Start</h2>
+                
+                <p>
+                    Trézór.io/Start is your gateway to secure cryptocurrency management. Our platform
+                    combines cutting-edge security with user-friendly interfaces to provide the most
+                    reliable hardware wallet solution in the market.
+                </p>
+
+                <h3>Advanced Security Features</h3>
+                <p>
+                    At the core of Trézór Suite lies our commitment to security. Every transaction
+                    is protected by multiple layers of encryption, ensuring your digital assets
+                    remain safe from unauthorized access.
+                </p>
+
+                <h3>Intuitive User Experience</h3>
+                <p>
+                    We've designed Trézór Suite with user experience in mind. The interface is
+                    clean, organized, and easy to navigate, making cryptocurrency management
+                    accessible to both beginners and experienced users.
+                </p>
+
+                <h3>Multiple Currency Support</h3>
+                <p>
+                    Trézór Suite supports a wide range of cryptocurrencies, allowing you to manage
+                    multiple digital assets from a single, secure platform. From Bitcoin to the
+                    latest altcoins, we've got you covered.
+                </p>
+
+                <h3>Regular Updates and Support</h3>
+                <p>
+                    Our team continuously works to improve the Trézór Suite experience. Regular
+                    updates bring new features, enhanced security, and expanded cryptocurrency
+                    support to keep you at the forefront of digital asset management.
+                </p>
+
+                <h3>Getting Started</h3>
+                <p>
+                    Begin your journey with Trézór Suite by connecting your hardware wallet and
+                    following our simple setup process. Our comprehensive guides and 24/7 support
+                    ensure a smooth onboarding experience.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg class="wallet-icon" viewBox="0 0 24 24">
+                        <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                    <span>Trézór</span>
+                </div>
+                <p>Secure your digital assets with the most trusted hardware wallet.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="#suite">Suite</a></li>
+                    <li><a href="#model-t">Model T</a></li>
+                    <li><a href="#model-one">Model One</a></li>
+                    <li><a href="#safe-3">Safe 3</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#support">Support</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#press">Press</a></li>
+                    <li><a href="#legal">Legal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
